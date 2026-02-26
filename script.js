@@ -291,7 +291,22 @@ function startConfetti(){
 
 
 // ================= MUSIC PLAYER =================
+let audioUnlocked = false;
 
+function unlockAudio(){
+    if(audioUnlocked) return;
+
+    audio.volume = 0.01;
+    audio.play().then(()=>{
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 1;
+        audioUnlocked = true;
+    }).catch(()=>{});
+}
+
+document.addEventListener("click", unlockAudio);
+document.addEventListener("touchstart", unlockAudio);
 const tracks = [
   {title:"Perfect", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
   {title:"Iris", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
@@ -414,18 +429,27 @@ function formatTime(sec){
 
 // Initialize
 renderPlaylist();
-const congratsPlayBtn = document.getElementById('congratsPlay');
-if(congratsPlayBtn){
-  congratsPlayBtn.addEventListener('click', ()=>{
-    if(audio.paused){
-      audio.play().catch(()=>{});
-      congratsPlayBtn.textContent='⏸';
-    }else{
-      audio.pause();
-      congratsPlayBtn.textContent='▶';
+const congratsPlayBtn = document.getElementById("congratsPlay");
+
+congratsPlayBtn.addEventListener("click", () => {
+
+    // if no song loaded, load current playlist song
+    if(!audio.src || audio.src === window.location.href){
+        audio.src = tracks[startIndex].url;
     }
-  });
-}
+
+    if(audio.paused){
+        audio.play().then(()=>{
+            congratsPlayBtn.textContent = "⏸";
+        }).catch(err=>{
+            console.log("Play blocked:", err);
+        });
+    }else{
+        audio.pause();
+        congratsPlayBtn.textContent = "▶";
+    }
+
+});
 
 
 
