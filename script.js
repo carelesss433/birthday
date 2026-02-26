@@ -293,12 +293,12 @@ function startConfetti(){
 // ================= MUSIC PLAYER =================
 
 const tracks = [
-  {title:"Perfect", url:"https://archive.org/details/its-you_202602"},
-  {title:"Iris", url:"https://archive.org/details/its-you_202602"},
-  {title:"One More Hour", url:"https://archive.org/details/its-you_202602"},
-  {title:"Night Changes", url:"https://archive.org/details/its-you_202602"},
-  {title:"Photograph", url:"https://archive.org/details/its-you_202602"},
-  {title:"Counting Stars", url:"https://archive.org/details/its-you_202602"}
+  {title:"Perfect", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
+  {title:"Iris", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
+  {title:"One More Hour", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
+  {title:"Night Changes", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
+  {title:"Photograph", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
+  {title:"Counting Stars", url:"https://archive.org/download/its-you_202602/its-you.mp3"}
 ];
 
 const audio = document.getElementById("audio");
@@ -426,6 +426,7 @@ if(congratsPlayBtn){
     }
   });
 }
+
 
 
 
