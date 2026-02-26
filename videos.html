@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Video Memories</title>
 
 <style>
-
-/* PAGE */
 body{
     margin:0;
     font-family:Segoe UI, Arial;
@@ -30,11 +27,11 @@ body{
     margin-top:12px;
 }
 
-/* SLIDER */
+/* Slider */
 .slider-container{
     position:relative;
     width:92%;
-    max-width:680px;
+    max-width:700px;
     margin:40px auto;
     border-radius:18px;
     overflow:hidden;
@@ -44,70 +41,47 @@ body{
 
 .slide{
     display:none;
-    position:relative;
-}
-
-.slide.active{ display:block; }
-
-/* video */
-.slide video{
-    width:100%;
-    height:100%;
-    max-height:70dvh;
-    object-fit:contain;
-    display:block;
-    background:black;
-}
-
-/* portrait */
-.slide.portrait{
-    aspect-ratio:9/16;
-    max-width:360px;
-    margin:auto;
-}
-
-/* landscape */
-.slide.landscape{
     aspect-ratio:16/9;
 }
 
-/* sound button */
-.sound-btn{
-    position:absolute;
-    bottom:12px;
-    right:12px;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:rgba(0,0,0,.55);
-    color:white;
-    border:none;
-    font-size:18px;
-    cursor:pointer;
+.slide.active{
+    display:block;
 }
 
-/* arrows */
+.slide iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+/* Arrows */
 .prev,.next{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     border:none;
     background:white;
     font-size:20px;
     cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
 }
 
 .prev{left:12px;}
 .next{right:12px;}
 
-/* dots */
+.prev:hover,.next:hover{
+    transform:translateY(-50%) scale(1.1);
+}
+
+/* Dots */
 .dots{
     text-align:center;
     padding:12px 0;
 }
+
 .dot{
     width:8px;
     height:8px;
@@ -117,150 +91,98 @@ body{
     display:inline-block;
     cursor:pointer;
 }
+
 .dot.active{
     background:#ff4d6d;
     transform:scale(1.2);
 }
 
+/* Mobile */
+@media(max-width:600px){
+    .slide{
+        aspect-ratio:9/16;
+    }
+}
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
-<h2>Our Video Memories ❤️</h2>
-<a class="back" href="index.html#gallery">← Back to Images</a>
+    <h2>Our Video Memories ❤️</h2>
+    <a class="back" href="index.html#gallery">← Back to Images</a>
 </div>
 
 <div class="slider-container">
 
-<!-- LOCAL VIDEO -->
+    <!-- VIDEO 1 -->
+    <div class="slide active">
+        <iframe 
+            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    </div>
 
-<div class="slide">
-  <iframe 
-    class="mem-video"
-    src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
-    width="100%"
-    height="100%"
-    allow="autoplay">
-  </iframe>
-</div>
+    <!-- VIDEO 2 -->
+    <div class="slide">
+        <iframe 
+            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    </div>
 
-<!-- GOOGLE DRIVE VIDEO -->
+    <!-- VIDEO 3 -->
+    <div class="slide">
+        <iframe 
+            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    </div>
 
-<div class="slide">
-  <iframe 
-    class="mem-video"
-    src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
-    width="100%"
-    height="100%"
-    allow="autoplay">
-  </iframe>
-</div>
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
 
-<!-- ANOTHER LOCAL VIDEO -->
-
-<div class="slide">
-  <iframe 
-    class="mem-video"
-    src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
-    width="100%"
-    height="100%"
-    allow="autoplay">
-  </iframe>
-</div>
-
-<button class="prev">❮</button> <button class="next">❯</button>
-
-<div class="dots"></div>
+    <div class="dots"></div>
 
 </div>
 
 <script>
-
 const slides=document.querySelectorAll(".slide");
-const videos=document.querySelectorAll(".mem-video");
 const next=document.querySelector(".next");
 const prev=document.querySelector(".prev");
 const dotsContainer=document.querySelector(".dots");
-const soundBtns=document.querySelectorAll(".sound-btn");
 
 let index=0;
 
-/* dots */
+/* Create dots */
 slides.forEach((_,i)=>{
- const d=document.createElement("span");
- d.className="dot";
- if(i===0)d.classList.add("active");
- d.onclick=()=>showSlide(i);
- dotsContainer.appendChild(d);
+    const d=document.createElement("span");
+    d.className="dot";
+    if(i===0)d.classList.add("active");
+    d.onclick=()=>showSlide(i);
+    dotsContainer.appendChild(d);
 });
+
 const dots=document.querySelectorAll(".dot");
 
-/* slide change */
+/* Show slide */
 function showSlide(i){
+    slides[index].classList.remove("active");
+    dots[index].classList.remove("active");
 
- videos.forEach(v=>{
-   v.pause();
-   v.currentTime=0;
-   v.muted=true;
- });
+    index=i;
 
- slides[index].classList.remove("active");
- dots[index].classList.remove("active");
-
- index=i;
-
- slides[index].classList.add("active");
- dots[index].classList.add("active");
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
 }
 
-/* arrows */
+/* Arrows */
 next.onclick=()=>showSlide((index+1)%slides.length);
 prev.onclick=()=>showSlide((index-1+slides.length)%slides.length);
-
-/* hover play (desktop) */
-slides.forEach((slide,i)=>{
- slide.addEventListener("mouseenter",()=>{
-   videos[i].muted=true;
-   videos[i].play();
- });
- slide.addEventListener("mouseleave",()=>{
-   videos[i].pause();
-   videos[i].currentTime=0;
- });
-});
-
-/* mobile tap play */
-videos.forEach((video)=>{
- video.addEventListener("touchstart",()=>{
-   if(video.paused) video.play();
-   else video.pause();
- });
-});
-
-/* sound toggle */
-soundBtns.forEach((btn,i)=>{
- btn.onclick=(e)=>{
-   e.stopPropagation();
-   videos[i].muted=!videos[i].muted;
-   btn.textContent=videos[i].muted?"🔇":"🔊";
-   videos[i].play();
- };
-});
-
-/* portrait vs landscape detect */
-slides.forEach(slide=>{
- const v=slide.querySelector("video");
- v.addEventListener("loadedmetadata",()=>{
-   if(v.videoHeight>v.videoWidth) slide.classList.add("portrait");
-   else slide.classList.add("landscape");
- });
-});
-
 </script>
 
 </body>
 </html>
-
