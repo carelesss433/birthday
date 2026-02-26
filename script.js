@@ -293,12 +293,12 @@ function startConfetti(){
 // ================= MUSIC PLAYER =================
 
 const tracks = [
-  {title:"Perfect", url:"its you.mp3"},
-  {title:"Iris", url:"its you.mp3"},
-  {title:"One More Hour", url:"its you.mp3"},
-  {title:"Night Changes", url:"its you.mp3"},
-  {title:"Photograph", url:"its you.mp3"},
-  {title:"Counting Stars", url:"its you.mp3"}
+  {title:"Perfect", url:"its-you.mp3"},
+  {title:"Iris", url:"its-you.mp3"},
+  {title:"One More Hour", url:"its-you.mp3"},
+  {title:"Night Changes", url:"its-you.mp3"},
+  {title:"Photograph", url:"its-you.mp3"},
+  {title:"Counting Stars", url:"its-you.mp3"}
 ];
 
 const audio = document.getElementById("audio");
@@ -426,3 +426,4 @@ if(congratsPlayBtn){
     }
   });
 }
+
