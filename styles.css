@@ -136,8 +136,8 @@ nav a{
 
 /* grid that is clipped by heart */
 .heart-grid{
-  width:600px;
-  height:600px;
+  width:605px;
+  height:605px;
 
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -515,6 +515,7 @@ button{
     background:#ff4d6d;
     color:white;
 }
+
 
 
 
