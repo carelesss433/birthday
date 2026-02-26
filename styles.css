@@ -123,10 +123,10 @@ nav a{
 /* ================= HEART GALLERY (SVG MASK) ================= */
 
 .heart-container{
-  /* make heart larger and responsive */
-  width: min(98vw, 98vh);
-  height: min(98vw, 98vh);
-  margin: 0 auto 0; /* remove top gap entirely */
+    position:relative;
+    width:min(90vw, 600px);
+    aspect-ratio:1 / 1;
+    margin:auto;
 }
 .heart-svg{
   width:100%;
@@ -136,29 +136,22 @@ nav a{
 
 /* grid that is clipped by heart */
 .heart-grid{
-  width:600px;
-  height:600px;
-
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(4,1fr);
-
-  gap:0;
-  padding:40px 70px 110px 70px; /* positions inside heart */
-  background:#ff4d6d;
+    position:absolute;
+    inset:0;              /* fill entire heart container */
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:0;
+    padding:0;            /* REMOVE old padding */
+    width:100%;
+    height:100%;
 }
 
 .heart-grid img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:0;
-  box-shadow:none;
-  margin:0;
-  padding:0;
-  
-  box-sizing:border-box;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 .heart-grid img:hover{
@@ -515,6 +508,7 @@ button{
     background:#ff4d6d;
     color:white;
 }
+
 
 
 
