@@ -22,6 +22,58 @@ body{
   padding:24px;
 }
 
+
+.birthday-title{
+  display:inline-block;
+
+  animation:
+    birthdayJump 1.2s ease-in-out infinite,
+    birthdayGlow 2.2s ease-in-out infinite;
+}
+
+/* soft double bounce */
+@keyframes birthdayJump{
+  0%{
+    transform:translateY(0);
+  }
+
+  20%{
+    transform:translateY(-10px);
+  }
+
+  40%{
+    transform:translateY(0);
+  }
+
+  60%{
+    transform:translateY(-5px);
+  }
+
+  80%{
+    transform:translateY(0);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+}
+
+/* glowing color shift */
+@keyframes birthdayGlow{
+  0%,100%{
+    text-shadow:
+      0 0 6px #fff,
+      0 0 14px #ff7aa2,
+      0 0 24px #ff4d6d;
+  }
+
+  50%{
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #ffd166,
+      0 0 32px #ff9f1c;
+  }
+}
 /* Fade-in animation for sections */
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(20px)}
@@ -63,7 +115,7 @@ nav a{
 /* HERO */
 
 .hero{
-  background-image:url('https://source.unsplash.com/1600x900/?dog,birthday');
+  background-image:url('bg1.jpg');
   background-size:cover;
   background-position:center;
   min-height:100vh;
@@ -122,17 +174,20 @@ nav a{
 
 /* ================= HEART GALLERY (SVG MASK) ================= */
 
+/* ================= HEART GALLERY FINAL ================= */
 .heart-container{
   /* make heart larger and responsive */
-  width: min(98vw, 98vh);
-  height: min(98vw, 98vh);
-  margin: 0 auto 0; /* remove top gap entirely */
+  width:min(98vw,98vh);
+  height:min(98vw,98vh);
+  margin:0 auto 0;
+  position: relative;
 }
+
 .heart-svg{
   width:100%;
   height:100%;
   display:block;
-} 
+}
 
 /* grid that is clipped by heart */
 .heart-grid{
@@ -144,8 +199,11 @@ nav a{
   grid-template-rows:repeat(3,1fr);
 
   gap:0;
-  padding:40px 70px 110px 70px; /* positions inside heart */
+  padding:40px 70px 110px 70px;
   background:#ff4d6d;
+
+  /* IMPORTANT: move images downward inside heart */
+  transform:translateY(5px);
 }
 
 .heart-grid img{
@@ -157,13 +215,81 @@ nav a{
   box-shadow:none;
   margin:0;
   padding:0;
+  
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    filter .35s,
+    box-shadow .45s;
   box-sizing:border-box;
+}
+/* move ONLY first row slightly left */
+.heart-grid img:nth-child(-n+3){
+  width:105%;
+  transform:translateX(-2%);
+}
+
+.heart-grid:hover img{
+  filter:brightness(.4) blur(2px);
 }
 
 .heart-grid img:hover{
-  transform:scale(1.1);
+  filter:brightness(1) blur(0);
+}
+/* dim non-hovered images */
+/* dim others */
+.heart-grid:hover img{
+  filter:brightness(.4) blur(2px);
+  /* transition:.35s; */
+}
+/* preview image layer */
+#heartPreview{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  z-index:60;
 }
 
+#heartPreview img{
+  max-width:58%;
+  max-height:72%;
+  border-radius:14px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.65),
+    0 0 0 6px #fff;
+  opacity:0;
+  transform:scale(.8);
+  transition:.25s ease;
+}
+
+#heartPreview.show img{
+  opacity:1;
+  transform:scale(1);
+}
+/* hovered image jumps to center of heart */
+/* .heart-grid img:hover{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  width:55%;
+  height:auto;
+
+  transform:translate(-50%,-50%) scale(1);
+
+  z-index:50;
+
+  filter:brightness(1) blur(0);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.65),
+    0 0 0 6px #fff;
+
+  border-radius:14px;
+} */
 /* reduce space below the gallery heading specifically */
 #gallery .container > h2{margin-bottom:0}
 
@@ -756,4 +882,89 @@ button{
     background:#ff4d6d;
     color:white;
 }
+
+
+#home{
+  position:relative;
+  overflow:hidden;
+}
+/* ================= CELEBRATION EFFECT ================= */
+
+/* ----- PARTY CANNONS ----- */
+
+.party-cannons{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:6;
+}
+
+.cannon{
+  position:absolute;
+  font-size:44px;
+  bottom:40px;
+  opacity:.95;
+  animation:popShake .7s ease infinite alternate;
+}
+
+.left{ left:18px; transform:rotate(-25deg); }
+.right{ right:18px; transform:rotate(25deg); }
+
+@keyframes popShake{
+  from{ transform:translateY(0) rotate(-25deg); }
+  to{ transform:translateY(-7px) rotate(-25deg); }
+}
+
+/* confetti pieces */
+
+.piece{
+  position:absolute;
+  width:10px;
+  height:14px;
+  border-radius:2px;
+  pointer-events:none;
+}
+
+@keyframes shootRight{
+  0%{ transform:translate(0,0) rotate(0); opacity:1; }
+  100%{ transform:translate(110vw,-90vh) rotate(720deg); opacity:0; }
+}
+
+@keyframes shootLeft{
+  0%{ transform:translate(0,0) rotate(0); opacity:1; }
+  100%{ transform:translate(-110vw,-90vh) rotate(-720deg); opacity:0; }
+}
+
+/* ===== SPARK RAIN (TOP → DOWN) ===== */
+
+.spark{
+  position:absolute;
+  width:4px;
+  height:14px;
+  border-radius:2px;
+  top:-20px;
+  opacity:0.95;
+  pointer-events:none;
+
+  background:linear-gradient(to bottom, #fff, #ffd166, #ff9f1c);
+  box-shadow:
+    0 0 6px #fff,
+    0 0 12px #ffd166,
+    0 0 18px #ff9f1c;
+
+  animation: sparkFall linear forwards;
+}
+
+/* falling physics */
+@keyframes sparkFall{
+  0%{
+    transform:translateY(-20px) scale(.8);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh) scale(.2);
+    opacity:0;
+  }
+}
+
 
