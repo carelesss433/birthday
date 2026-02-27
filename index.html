@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Birthday Bash - Dogs Edition</title>
+    <title>Birthday Bash </title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
-        <div class="logo">🎉 Birthday Bash</div>
+        <div class="logo" style="font-size: xx-large;">🎉 Birthday Bash</div>
         <nav>
           <a href="#home">Home</a>
           <a href="#gallery">Gallery</a>
@@ -23,7 +23,10 @@
       <section id="home" class="hero">
   <div style="color: black;" class="hero-content container">
 
-    <h1>Happy Birthday! 🎂</h1>
+   
+    <h1 class="birthday-title">Happy Birthday! 🎂</h1>
+
+    
 
     <p class="type-line" data-text="Today is not just another date on the calendar — it’s the day someone truly special came into this world."></p>
 
@@ -38,6 +41,16 @@
     <a class="cta" href="#gallery">Start the Celebration</a>
 
   </div>
+        <div class="party-cannons">
+  <div id="leftCannon" class="cannon left">🎉</div>
+  <div id="rightCannon" class="cannon right">🎉</div>
+</div>
+
+
+<!-- birthday song -->
+<audio id="birthdaySong" preload="auto">
+  <source src="https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3" type="audio/mpeg">
+</audio>
 </section>
 <br>
       <section id="gallery" class="section">
@@ -49,6 +62,7 @@
 </div>
     <div class="heart-container">
       <svg viewBox="0 0 600 630" class="heart-svg">
+        
         <defs>
           <clipPath id="heartClip">
             <path d="M300 520 
@@ -59,7 +73,7 @@
           </clipPath>
         </defs>
 
-        <foreignObject width="600" height="600" clip-path="url(#heartClip)">
+        <foreignObject x="0" y="0" width="600" height="600" clip-path="url(#heartClip)">
           <div class="heart-grid">
   <!-- <img src="v2.jpeg">
   <img src="v6.jpeg">
@@ -70,6 +84,7 @@
   <img src="v3.jpg">
   <img src="v4.jpeg">
   <img src="robin.jpg"> -->
+   
 <img src="https://lh3.googleusercontent.com/d/1WeXiz-Bdm7dqfzwAE3WttZtOTBr44J5C=s1600" class="memory">
 <img src="https://lh3.googleusercontent.com/d/1WeXiz-Bdm7dqfzwAE3WttZtOTBr44J5C=s1600" class="memory">
 <img src="https://lh3.googleusercontent.com/d/1WeXiz-Bdm7dqfzwAE3WttZtOTBr44J5C=s1600" class="memory">
@@ -83,6 +98,9 @@
 </div>
         </foreignObject>
       </svg>
+      <div id="heartPreview">
+  <img id="previewImg">
+</div>
     </div>
   </div>
 </section>
@@ -226,6 +244,10 @@ window.addEventListener("load", typeWriter);
     <script src="script.js"></script>
   </body>
 </html>
+
+
+
+
 
 
 
