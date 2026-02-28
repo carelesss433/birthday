@@ -307,13 +307,14 @@ function unlockAudio(){
 
 document.addEventListener("click", unlockAudio);
 document.addEventListener("touchstart", unlockAudio);
+
 const tracks = [
-  {title:"Perfect", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
-  {title:"Iris", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
-  {title:"One More Hour", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
-  {title:"Night Changes", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
-  {title:"Photograph", url:"https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3"},
-  {title:"Counting Stars", url:"https://archive.org/download/its-you_202602/its-you.mp3"}
+  {title:"24/7,365", url:"songs/7 365   elijah woods.m4a.mp4"},
+  {title:"Behtareen", url:"songs/Behtareen (feat. Munawar Faruqui)   Spectra Music.m4a.mp4"},
+  {title:"Drunk text", url:"songs/drunk text   Henry Moodie.m4a.mp4"},
+  {title:"Goona Be Okay", url:"songs/Goona Be Okay   Adam Melchor.m4a.mp4"},
+  {title:"Rewrite The Stars", url:"songs/Rewrite The Stars   Zac Efron & Zendaya.m4a.mp4"},
+  {title:"Waqt Ki Baatein", url:"songs/Waqt Ki Baatein   Arijit Singh.m4a.mp4"}
 ];
 
 const audio = document.getElementById("audio");
@@ -567,3 +568,4 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
