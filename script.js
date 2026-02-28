@@ -291,20 +291,36 @@ function startConfetti(){
 
 
 // ================= MUSIC PLAYER =================
+// let audioUnlocked = false;
+
+// function unlockAudio(){
+//     if(audioUnlocked) return;
+
+//     audio.volume = 0.01;
+//     audio.play().then(()=>{
+//         audio.pause();
+//         audio.currentTime = 0;
+//         audio.volume = 1;
+//         audioUnlocked = true;
+//     }).catch(()=>{});
+// }
 let audioUnlocked = false;
 
-function unlockAudio(){
-    if(audioUnlocked) return;
+document.addEventListener("pointerdown", unlockAudio, { once: true });
 
-    audio.volume = 0.01;
-    audio.play().then(()=>{
-        audio.pause();
-        audio.currentTime = 0;
-        audio.volume = 1;
-        audioUnlocked = true;
-    }).catch(()=>{});
+function unlockAudio() {
+  const audio = document.getElementById("birthdaySong");
+
+  if (!audio) return;
+
+  audio.muted = true;
+  audio.play().then(() => {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.muted = false;
+    audioUnlocked = true;
+  }).catch(()=>{});
 }
-
 document.addEventListener("click", unlockAudio);
 document.addEventListener("touchstart", unlockAudio);
 
@@ -496,7 +512,6 @@ window.addEventListener("load", fireCannons);
 
 /* play birthday song on first click */
 let played=false;
-
 document.addEventListener("click", async ()=>{
   if(played) return;
   played=true;
@@ -513,6 +528,23 @@ document.addEventListener("click", async ()=>{
     console.log("Audio blocked by browser");
   }
 });
+
+// document.addEventListener("click", async ()=>{
+//   if(played) return;
+//   played=true;
+
+//   try{
+//     await song.play();
+
+//     setTimeout(()=>{
+//       song.pause();
+//       song.currentTime=0;
+//     },10000);
+
+//   }catch(e){
+//     console.log("Audio blocked by browser");
+//   }
+// });
 
 
 /* ===== SPARK SHOWER FROM TOP ===== */
@@ -569,6 +601,7 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
 
