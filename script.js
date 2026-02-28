@@ -309,12 +309,12 @@ document.addEventListener("click", unlockAudio);
 document.addEventListener("touchstart", unlockAudio);
 
 const tracks = [
-    {title:"24/7,365", url:"songs/241365.mp3"},
-  {title:"Behtareen", url:"songs/Behtareen.mp3"},
+  {title:"24/7,365", url:"songs/241365.mp3"},
+  {title:"Behtareen", url:"songs/behtareen.mp3"},
   {title:"Drunk text", url:"songs/drunk_text.mp3"},
-  {title:"Goona Be Okay", url:"songs/GoonaBeOkay.mp3"},
-  {title:"Rewrite The Stars", url:"songs/RewriteTheStars.mp3"},
-  {title:"Waqt Ki Baatein", url:"songs/WaqtKiBaatein.mp3"}
+  {title:"Gonna Be Okay", url:"songs/gonnabeokay.mp3"},
+  {title:"Rewrite The Stars", url:"songs/rewritethestars.mp3"},
+  {title:"Waqt Ki Baatein", url:"songs/waqtkibaatein.mp3"}
 ];
 
 const audio = document.getElementById("audio");
@@ -568,6 +568,7 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
 
