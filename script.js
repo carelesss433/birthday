@@ -330,7 +330,8 @@ document.addEventListener("touchstart", unlockAudio);
   {title:"Drunk text", url:"songs/drunk_text.mp3"},
   {title:"Gonna Be Okay", url:"songs/GonnaBeOkay.mp3"},
   {title:"Rewrite The Stars", url:"songs/RewriteTheStars.mp3"},
-  {title:"Waqt Ki Baatein", url:"songs/WaqtKiBaatein.mp3"}
+  {title:"Waqt Ki Baatein", url:"songs/WaqtKiBaatein.mp3"},
+   {title:"Nonsense", url:"songs/Nonsense.mp3"}
 
 ];
 
@@ -601,6 +602,7 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
 
