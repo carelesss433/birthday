@@ -309,7 +309,7 @@ document.addEventListener("click", unlockAudio);
 document.addEventListener("touchstart", unlockAudio);
 
 const tracks = [
-    {title:"24/7,365", url:"songs/24_1,365.mp3"},
+    {title:"24/7,365", url:"songs/241365.mp3"},
   {title:"Behtareen", url:"songs/Behtareen.mp3"},
   {title:"Drunk text", url:"songs/drunk_text.mp3"},
   {title:"Goona Be Okay", url:"songs/GoonaBeOkay.mp3"},
@@ -568,5 +568,6 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
