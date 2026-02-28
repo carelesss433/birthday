@@ -13,7 +13,15 @@ body{
   margin:0;
   color:var(--dark);
   min-height:100vh;
-  background:linear-gradient(135deg,#ffd1e8 0%, #ffe6f3 30%, #f7f0ff 60%, #f0fbff 100%);
+  background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),
+    /* linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), */
+    url("bg1.jpeg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  /* background:linear-gradient(135deg,#ffd1e8 0%, #ffe6f3 30%, #f7f0ff 60%, #f0fbff 100%); */
 }
 
 .container{
@@ -59,7 +67,7 @@ body{
 }
 
 /* glowing color shift */
-@keyframes birthdayGlow{
+/* @keyframes birthdayGlow{
   0%,100%{
     text-shadow:
       0 0 6px #fff,
@@ -73,7 +81,7 @@ body{
       0 0 20px #ffd166,
       0 0 32px #ff9f1c;
   }
-}
+} */
 /* Fade-in animation for sections */
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(20px)}
@@ -115,9 +123,9 @@ nav a{
 /* HERO */
 
 .hero{
-  background-image:url('bg1.jpg');
+  /* background-image:url('bg1.jpg');
   background-size:cover;
-  background-position:center;
+  background-position:center; */
   min-height:100vh;
   display:flex;
   align-items:center;
