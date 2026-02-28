@@ -9,7 +9,15 @@
 body{
     margin:0;
     font-family:Segoe UI, Arial;
-    background:linear-gradient(135deg,#ffd1e8,#f7f0ff,#f0fbff);
+    /* background:linear-gradient(135deg,#ffd1e8,#f7f0ff,#f0fbff); */
+    background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),
+    /* linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), */
+    url("bg1.jpeg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
 }
 
 .header{
@@ -118,7 +126,7 @@ body{
     <!-- VIDEO 1 -->
     <div class="slide active">
         <iframe 
-            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            src="https://drive.google.com/file/d/1p7wtQjt7yPa9Ri3poeLLQny6R9FrRO1a/preview"
             allow="autoplay"
             allowfullscreen>
         </iframe>
@@ -127,7 +135,7 @@ body{
     <!-- VIDEO 2 -->
     <div class="slide">
         <iframe 
-            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            src="https://drive.google.com/file/d/1LNIPdfzVf5FsQ0rpbctptctYODGXo5VR/preview"
             allow="autoplay"
             allowfullscreen>
         </iframe>
@@ -136,7 +144,7 @@ body{
     <!-- VIDEO 3 -->
     <div class="slide">
         <iframe 
-            src="https://drive.google.com/file/d/1jNqk52aP1J2t2gh2WQOhiN1XRGZ7xMeK/preview"
+            src="https://drive.google.com/file/d/1p7wtQjt7yPa9Ri3poeLLQny6R9FrRO1a/preview"
             allow="autoplay"
             allowfullscreen>
         </iframe>
@@ -186,3 +194,4 @@ prev.onclick=()=>showSlide((index-1+slides.length)%slides.length);
 
 </body>
 </html>
+
