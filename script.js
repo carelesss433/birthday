@@ -309,12 +309,12 @@ document.addEventListener("click", unlockAudio);
 document.addEventListener("touchstart", unlockAudio);
 
 const tracks = [
-  {title:"24/7,365", url:"songs/7 365   elijah woods.m4a.mp4"},
-  {title:"Behtareen", url:"songs/Behtareen (feat. Munawar Faruqui)   Spectra Music.m4a.mp4"},
-  {title:"Drunk text", url:"songs/drunk text   Henry Moodie.m4a.mp4"},
-  {title:"Goona Be Okay", url:"songs/Goona Be Okay   Adam Melchor.m4a.mp4"},
-  {title:"Rewrite The Stars", url:"songs/Rewrite The Stars   Zac Efron & Zendaya.m4a.mp4"},
-  {title:"Waqt Ki Baatein", url:"songs/Waqt Ki Baatein   Arijit Singh.m4a.mp4"}
+    {title:"24/7,365", url:"songs/24_1,365.mp3"},
+  {title:"Behtareen", url:"songs/Behtareen.mp3"},
+  {title:"Drunk text", url:"songs/drunk_text.mp3"},
+  {title:"Goona Be Okay", url:"songs/GoonaBeOkay.mp3"},
+  {title:"Rewrite The Stars", url:"songs/RewriteTheStars.mp3"},
+  {title:"Waqt Ki Baatein", url:"songs/WaqtKiBaatein.mp3"}
 ];
 
 const audio = document.getElementById("audio");
@@ -568,4 +568,5 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
