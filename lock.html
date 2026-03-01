@@ -7,7 +7,6 @@
 <title>Private Access</title>
 
 <style>
-
 body{
   margin:0;
   height:100vh;
@@ -27,9 +26,7 @@ body{
   box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-h2{
-  margin-top:0;
-}
+h2{ margin-top:0; }
 
 input{
   width:100%;
@@ -58,7 +55,6 @@ button{
   margin-top:8px;
   font-size:14px;
 }
-
 </style>
 
 </head>
@@ -66,10 +62,10 @@ button{
 <body>
 
 <div class="lockBox">
-  <h2>🎁 Enter your birthday </h2>
-  <p>Enter password</p>
+  <h2>🎁 Private Birthday Surprise</h2>
+  <p>Enter your birthday</p>
 
-  <input id="pass" type="password" placeholder="Password">
+  <input id="pass" type="text" placeholder="DDMM (example: 0903)">
   <button onclick="check()">Unlock</button>
 
   <div id="error"></div>
@@ -77,77 +73,61 @@ button{
 
 <script>
 
-const PASSWORD = ["10/03/2004","03-10-2004"]; // CHANGE THIS
+// ================= ALLOWED BIRTHDAYS (DDMM) =================
+const BIRTHDAYS = [
+  "0903",
+  "1207",
+  "2211",
+  "1508",
+  "0101"
+];
+
+// convert user input → DDMM
+function normalizeBirthday(input){
+
+  input = input.trim();
+
+  // remove separators like / - .
+  input = input.replace(/[-\/.]/g,'');
+
+  // 8 digit date (09032004)
+  if(input.length === 8){
+    return input.slice(0,4);
+  }
+
+  // 3 digit (903 -> 0903)
+  if(input.length === 3){
+    return "0" + input;
+  }
+
+  return input;
+}
+
 function check(){
 
-  const value = document.getElementById("pass").value.trim().toLowerCase();
+  let value = document.getElementById("pass").value;
+  value = normalizeBirthday(value);
 
-  // verify password exists in list
-  if(PASSWORDS.includes(value)){
+  if(BIRTHDAYS.includes(value)){
 
-    // allow access only for this tab
+    // allow this session only
     sessionStorage.setItem("birthday_access","granted");
-
-    // OPTIONAL: remember which password entered
-    sessionStorage.setItem("who_entered", value);
+    sessionStorage.setItem("visitor_bday", value);
 
     window.location.href = "index.html";
 
   }else{
-    document.getElementById("error").textContent = "Wrong password";
+    document.getElementById("error").textContent =
+      "Enter birthday in DDMM format";
   }
 }
 
-// press Enter
+// press Enter to unlock
 document.getElementById("pass").addEventListener("keydown", e=>{
   if(e.key==="Enter") check();
 });
-document.addEventListener('contextmenu', function(e){
-  e.preventDefault();
-});
 
-// 2️⃣ Disable image drag
-document.addEventListener('dragstart', function(e){
-  e.preventDefault();
-});
-
-// 3️⃣ Disable common keyboard shortcuts
-document.addEventListener('keydown', function(e){
-
-  // block Ctrl / Cmd shortcuts
-  if (e.ctrlKey || e.metaKey) {
-
-    const blockedKeys = ['c','x','u','s','a','i','j'];
-
-    if (blockedKeys.includes(e.key.toLowerCase())) {
-      e.preventDefault();
-    }
-  }
-
-  // block F12
-  if (e.key === 'F12') {
-    e.preventDefault();
-  }
-
-});
-
-// 4️⃣ Attempt DevTools detection (aggressive)
-setInterval(function(){
-
-  const threshold = 160;
-
-  if (
-    window.outerWidth - window.innerWidth > threshold ||
-    window.outerHeight - window.innerHeight > threshold
-  ){
-    document.body.innerHTML = "";
-  }
-
-}, 1000);
 </script>
 
 </body>
 </html>
-
-
-
