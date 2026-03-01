@@ -628,6 +628,51 @@ heartImgs.forEach(img=>{
 
 
 
+// ================= BASIC CONTENT LOCK =================
+
+// 1️⃣ Disable right click
+document.addEventListener('contextmenu', function(e){
+  e.preventDefault();
+});
+
+// 2️⃣ Disable image drag
+document.addEventListener('dragstart', function(e){
+  e.preventDefault();
+});
+
+// 3️⃣ Disable common keyboard shortcuts
+document.addEventListener('keydown', function(e){
+
+  // block Ctrl / Cmd shortcuts
+  if (e.ctrlKey || e.metaKey) {
+
+    const blockedKeys = ['c','x','u','s','a','i','j'];
+
+    if (blockedKeys.includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  }
+
+  // block F12
+  if (e.key === 'F12') {
+    e.preventDefault();
+  }
+
+});
+
+// 4️⃣ Attempt DevTools detection (aggressive)
+setInterval(function(){
+
+  const threshold = 160;
+
+  if (
+    window.outerWidth - window.innerWidth > threshold ||
+    window.outerHeight - window.innerHeight > threshold
+  ){
+    document.body.innerHTML = "";
+  }
+
+}, 1000);
 
 
 
