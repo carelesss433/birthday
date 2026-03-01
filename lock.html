@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Access</title>
+
+<style>
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(135deg,#ffccd5,#ffe6f0,#f3e8ff);
+}
+
+.lockBox{
+  background:white;
+  padding:30px;
+  width:320px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+h2{
+  margin-top:0;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  font-size:16px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:14px;
+  border:none;
+  border-radius:10px;
+  background:#ff7aa2;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#error{
+  color:red;
+  height:18px;
+  margin-top:8px;
+  font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="lockBox">
+  <h2>🎁 Private Birthday Surprise</h2>
+  <p>Enter password</p>
+
+  <input id="pass" type="password" placeholder="Password">
+  <button onclick="check()">Unlock</button>
+
+  <div id="error"></div>
+</div>
+
+<script>
+
+const PASSWORD = "0909"; // CHANGE THIS
+
+function check(){
+
+  const value = document.getElementById("pass").value;
+
+  if(value === PASSWORD){
+
+    // remember unlocked
+    localStorage.setItem("birthday_access","granted");
+
+    // go to real site
+    window.location.href = "index.html";
+
+  }else{
+    document.getElementById("error").textContent = "Wrong password";
+  }
+}
+
+// press Enter
+document.getElementById("pass").addEventListener("keydown", e=>{
+  if(e.key==="Enter") check();
+});
+document.addEventListener('contextmenu', function(e){
+  e.preventDefault();
+});
+
+// 2️⃣ Disable image drag
+document.addEventListener('dragstart', function(e){
+  e.preventDefault();
+});
+
+// 3️⃣ Disable common keyboard shortcuts
+document.addEventListener('keydown', function(e){
+
+  // block Ctrl / Cmd shortcuts
+  if (e.ctrlKey || e.metaKey) {
+
+    const blockedKeys = ['c','x','u','s','a','i','j'];
+
+    if (blockedKeys.includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  }
+
+  // block F12
+  if (e.key === 'F12') {
+    e.preventDefault();
+  }
+
+});
+
+// 4️⃣ Attempt DevTools detection (aggressive)
+setInterval(function(){
+
+  const threshold = 160;
+
+  if (
+    window.outerWidth - window.innerWidth > threshold ||
+    window.outerHeight - window.innerHeight > threshold
+  ){
+    document.body.innerHTML = "";
+  }
+
+}, 1000);
+</script>
+
+</body>
+</html>
