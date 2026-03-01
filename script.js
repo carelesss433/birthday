@@ -22,7 +22,7 @@ const replayBtn = document.getElementById('replayBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 let lastSolved = null;
 
-const imgCandidates = ['cat.jpg','cat.jpeg'];
+const imgCandidates = ['eyes.jpg','eyes.jpeg'];
 let imgUrl = imgCandidates[0];
 
 function setPuzzleSize(n){
@@ -206,7 +206,7 @@ showSolutionBtn.addEventListener('click', ()=>{
 function tryInit(idx=0){
 
   if(idx>=imgCandidates.length){
-    imgUrl='https://source.unsplash.com/360x360/?cat';
+    imgUrl='eyes.jpeg';
     solutionImg.src=imgUrl;
     createTiles();
     shuffleAll();
@@ -625,6 +625,7 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
 
