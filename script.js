@@ -33,7 +33,7 @@ function setPuzzleSize(n){
 // ---------- CREATE TILES ----------
 function createTiles(){
 
-  puzzleEl.replaceChildren();   // SAFE CLEAR
+  puzzleEl.replaceChildren();
   tiles = [];
   moves = 0;
   if(movesEl) movesEl.textContent = 0;
@@ -54,9 +54,11 @@ function createTiles(){
       el.style.width = TILE_SIZE+'px';
       el.style.height = TILE_SIZE+'px';
 
-      if(row === PUZZLE_SIZE-1 && col === PUZZLE_SIZE-1){
+      // ⭐ BLANK NOW TOP LEFT
+      if(row === 0 && col === 0){
         el.classList.add('blank');
       } else {
+
         el.style.backgroundImage = `url(${imgUrl})`;
         el.style.backgroundSize = `${PUZZLE_PIXELS}px ${PUZZLE_PIXELS}px`;
 
@@ -65,7 +67,14 @@ function createTiles(){
         el.style.backgroundPosition = `${px}% ${py}%`;
       }
 
-      const tileObj = {id,row,col,el};
+      const tileObj = {
+   id,
+  row,
+  col,
+  solvedRow: row,
+  solvedCol: col,
+  el
+};
       if(el.classList.contains('blank')) blankTile = tileObj;
 
       el.style.transform = `translate(${col*TILE_SIZE}px, ${row*TILE_SIZE}px)`;
@@ -160,7 +169,13 @@ function shuffleAll(steps = 7){
 
 // ---------- SOLVE ----------
 function solve(){
+
   tiles.sort((a,b)=>a.id-b.id);
+
+  // move blank tile to first position
+  const blankIndex = tiles.findIndex(t => t.el.classList.contains('blank'));
+  const blankTileObj = tiles.splice(blankIndex,1)[0];
+  tiles.unshift(blankTileObj);
 
   let idx=0;
   for(let r=0;r<PUZZLE_SIZE;r++){
@@ -213,13 +228,21 @@ tryInit();
 
 // ---------- SOLVED / MODAL HANDLING ----------
 function checkSolved(){
-  // every tile's current row/col must match its original id position
+
   for(const t of tiles){
-    const id0 = t.id - 1;
-    const er = Math.floor(id0 / PUZZLE_SIZE);
-    const ec = id0 % PUZZLE_SIZE;
-    if(t.row !== er || t.col !== ec) return false;
+
+    // blank must be top-left
+    if(t.el.classList.contains('blank')){
+      if(t.row !== 0 || t.col !== 0) return false;
+      continue;
+    }
+
+    // every tile must be back to its original position
+    if(t.row !== t.solvedRow || t.col !== t.solvedCol){
+      return false;
+    }
   }
+
   return true;
 }
 
@@ -602,6 +625,7 @@ heartImgs.forEach(img=>{
     preview.classList.remove("show");
   });
 });
+
 
 
 
