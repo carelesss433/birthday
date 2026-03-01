@@ -29,6 +29,9 @@ body{
   background-repeat:no-repeat;
   background-attachment:fixed;
   /* background:linear-gradient(135deg,#ffd1e8 0%, #ffe6f3 30%, #f7f0ff 60%, #f0fbff 100%); */
+   -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
 }
 
 .container{
@@ -308,7 +311,9 @@ nav a{
 /* reduce space below the gallery heading specifically */
 #gallery .container > h2{margin-bottom:0}
 
-
+img{
+  pointer-events:none;
+}
 /* ================= MUSIC PLAYER ================= */
 
 .playlist-card{
