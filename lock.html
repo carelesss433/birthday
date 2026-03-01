@@ -26,8 +26,6 @@ body{
   box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-h2{ margin-top:0; }
-
 input{
   width:100%;
   padding:12px;
@@ -63,9 +61,9 @@ button{
 
 <div class="lockBox">
   <h2>🎁 Private Birthday Surprise</h2>
-  <p>Enter your birthday (DDMMYYYY)</p>
+  <p>Enter birthday (DDMMYYYY)</p>
 
-  <input id="pass" type="password" placeholder="Example: 09032005">
+  <input id="pass" type="password" placeholder="Example: 09012005">
   <button onclick="check()">Unlock</button>
 
   <div id="error"></div>
@@ -73,24 +71,18 @@ button{
 
 <script>
 
-// ===== ALLOWED FULL DATES =====
-const BIRTHDAYS = [
-  "09032005",
-  "12072004",
-  "22112003",
-  "15082005",
-  "01012004"
-];
+// ===== THE ONLY ALLOWED BIRTHDAY =====
+const REAL_BDAY = "10032004";   // ← change this
 
-// normalize input → DDMMYYYY
+// convert input to DDMMYYYY
 function normalizeBirthday(input){
 
   input = input.trim();
 
-  // remove separators / - .
+  // remove separators
   input = input.replace(/[-\/.]/g,'');
 
-  // must be 8 digits
+  // must be exactly 8 digits
   if(input.length !== 8) return null;
 
   return input;
@@ -101,20 +93,18 @@ function check(){
   let value = document.getElementById("pass").value;
   value = normalizeBirthday(value);
 
-  if(value && BIRTHDAYS.includes(value)){
+  if(value === REAL_BDAY){
 
     sessionStorage.setItem("birthday_access","granted");
-    sessionStorage.setItem("visitor_bday", value);
-
     window.location.href = "index.html";
 
   }else{
     document.getElementById("error").textContent =
-      "Wrong birthday format or not allowed";
+      "Incorrect birthday";
   }
 }
 
-// Enter key unlock
+// Enter key support
 document.getElementById("pass").addEventListener("keydown", e=>{
   if(e.key==="Enter") check();
 });
