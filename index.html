@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
       <script>
-if(localStorage.getItem("birthday_access")!=="granted"){
+if(sessionStorage.getItem("birthday_access")!=="granted"){
   window.location.href="lock.html";
 }
 </script>
@@ -240,6 +240,7 @@ window.addEventListener("load", typeWriter);
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
 
