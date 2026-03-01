@@ -86,7 +86,7 @@ function check(){
   if(value === PASSWORD){
 
     // remember unlocked
-    localStorage.setItem("birthday_access","granted");
+    sessionStorage.setItem("birthday_access","granted");
 
     // go to real site
     window.location.href = "index.html";
@@ -146,3 +146,4 @@ setInterval(function(){
 
 </body>
 </html>
+
