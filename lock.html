@@ -66,7 +66,7 @@ button{
 <body>
 
 <div class="lockBox">
-  <h2>🎁 Private Birthday Surprise</h2>
+  <h2>🎁 Enter your birthday </h2>
   <p>Enter password</p>
 
   <input id="pass" type="password" placeholder="Password">
@@ -77,18 +77,20 @@ button{
 
 <script>
 
-const PASSWORD = "0909"; // CHANGE THIS
-
+const PASSWORD = ["10/03/2004","03-10-2004"]; // CHANGE THIS
 function check(){
 
-  const value = document.getElementById("pass").value;
+  const value = document.getElementById("pass").value.trim().toLowerCase();
 
-  if(value === PASSWORD){
+  // verify password exists in list
+  if(PASSWORDS.includes(value)){
 
-    // remember unlocked
+    // allow access only for this tab
     sessionStorage.setItem("birthday_access","granted");
 
-    // go to real site
+    // OPTIONAL: remember which password entered
+    sessionStorage.setItem("who_entered", value);
+
     window.location.href = "index.html";
 
   }else{
@@ -146,5 +148,6 @@ setInterval(function(){
 
 </body>
 </html>
+
 
 
