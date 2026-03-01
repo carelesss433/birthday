@@ -65,7 +65,7 @@ button{
   <h2>🎁 Private Birthday Surprise</h2>
   <p>Enter your birthday</p>
 
-  <input id="pass" type="text" placeholder="DDMM (example: 0903)">
+  <input id="pass" type="text" placeholder="DDMMYYYY">
   <button onclick="check()">Unlock</button>
 
   <div id="error"></div>
@@ -75,11 +75,7 @@ button{
 
 // ================= ALLOWED BIRTHDAYS (DDMM) =================
 const BIRTHDAYS = [
-  "0903",
-  "1207",
-  "2211",
-  "1508",
-  "0101"
+  "10-03-2004","10/03/2004
 ];
 
 // convert user input → DDMM
@@ -131,3 +127,4 @@ document.getElementById("pass").addEventListener("keydown", e=>{
 
 </body>
 </html>
+
