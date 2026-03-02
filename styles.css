@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
 :root{
   --accent:#ff7aa2;
@@ -14,7 +14,12 @@ html{scroll-behavior:smooth}
   font-weight: 400;
   font-style: normal;
 }
-
+.akaya-kanadaka-regular {
+  font-family: "Akaya Kanadaka", system-ui;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+}
 body{
   font-family:Inter,Segoe UI,Arial,sans-serif;
   margin:0;
