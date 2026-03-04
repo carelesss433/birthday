@@ -52,9 +52,9 @@ if(sessionStorage.getItem("birthday_access")!=="granted"){
 
 
 <!-- birthday song -->
-<!-- <audio id="birthdaySong" preload="auto">
-  <source src="https://ia600608.us.archive.org/13/items/its-you_202602/its-you.mp3" type="audio/mpeg">
-</audio> -->
+<audio id="birthdaySong" preload="auto">
+  <source src="songs/RewriteTheStars.mp3" type="audio/mpeg">
+</audio>
 </section>
 <br>
       <section id="gallery" class="section">
@@ -238,10 +238,35 @@ function typeWriter(){
 /* start typing after page loads */
 window.addEventListener("load", typeWriter);
 
+window.addEventListener("load", () => {
+
+  if(sessionStorage.getItem("play_music")==="yes"){
+
+    const song = document.getElementById("birthdaySong");
+
+    if(song){
+
+      song.currentTime = 0;
+      song.play().catch(()=>{});
+
+      // stop after 10 seconds
+      setTimeout(()=>{
+        song.pause();
+        song.currentTime = 0;
+      },15000);
+
+    }
+
+    sessionStorage.removeItem("play_music");
+  }
+
+});
+
 </script>
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
 
