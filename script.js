@@ -327,25 +327,25 @@ function startConfetti(){
 //         audioUnlocked = true;
 //     }).catch(()=>{});
 // }
-let audioUnlocked = false;
+// let audioUnlocked = false;
 
-document.addEventListener("pointerdown", unlockAudio, { once: true });
+// document.addEventListener("pointerdown", unlockAudio, { once: true });
 
-function unlockAudio() {
-  const audio = document.getElementById("birthdaySong");
+// function unlockAudio() {
+//   const audio = document.getElementById("birthdaySong");
 
-  if (!audio) return;
+//   if (!audio) return;
 
-  audio.muted = true;
-  audio.play().then(() => {
-    audio.pause();
-    audio.currentTime = 0;
-    audio.muted = false;
-    audioUnlocked = true;
-  }).catch(()=>{});
-}
-document.addEventListener("click", unlockAudio);
-document.addEventListener("touchstart", unlockAudio);
+//   audio.muted = true;
+//   audio.play().then(() => {
+//     audio.pause();
+//     audio.currentTime = 0;
+//     audio.muted = false;
+//     audioUnlocked = true;
+//   }).catch(()=>{});
+// }
+// document.addEventListener("click", unlockAudio);
+// document.addEventListener("touchstart", unlockAudio);
 
  const tracks = [
   {title:"24/7,365", url:"songs/241365.mp3"},
@@ -495,7 +495,7 @@ congratsPlayBtn.addEventListener("click", () => {
 
 
 const hero = document.getElementById("home");
-const song = document.getElementById("birthdaySong");
+// const song = document.getElementById("birthdaySong");
 
 /* create confetti piece */
 function firePiece(fromLeft=true){
@@ -535,23 +535,23 @@ window.addEventListener("load", fireCannons);
 
 
 /* play birthday song on first click */
-let played=false;
-document.addEventListener("click", async ()=>{
-  if(played) return;
-  played=true;
+// let played=false;
+// document.addEventListener("click", async ()=>{
+//   if(played) return;
+//   played=true;
 
-  try{
-    await song.play();
+//   try{
+//     await song.play();
 
-    setTimeout(()=>{
-      song.pause();
-      song.currentTime=0;
-    },10000);
+//     setTimeout(()=>{
+//       song.pause();
+//       song.currentTime=0;
+//     },10000);
 
-  }catch(e){
-    console.log("Audio blocked by browser");
-  }
-});
+//   }catch(e){
+//     console.log("Audio blocked by browser");
+//   }
+// });
 
 // document.addEventListener("click", async ()=>{
 //   if(played) return;
@@ -673,6 +673,7 @@ setInterval(function(){
   }
 
 }, 1000);
+
 
 
 
